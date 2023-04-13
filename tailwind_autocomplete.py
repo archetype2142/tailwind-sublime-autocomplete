@@ -43,10 +43,11 @@ class tailwindCompletions(sublime_plugin.EventListener):
               if len(parts) > 1 and parts[-2].strip().endswith("className"):
                 return self.class_completions
             if matchSLIMString:
-              if len(parts) > 1 and parts[-2].strip().endswith("class"):
+              if view.substr(view.line(view.sel()[0])).split(".")[-1].startswith('tw'):
                 return self.class_completions
               if not view.substr(view.line(view.sel()[0])).startswith(tuple(["-", "="])):
                 return self.class_completions
+
             if len(parts) > 1 and parts[-2].strip().endswith("class"):
                 return self.class_completions
 
